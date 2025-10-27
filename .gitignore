@@ -34,7 +34,4 @@ build/
 
 .gitattributes
 HELP.md
-mvnw
-mvnw.cmd
-.mvn/wrapper/maven-wrapper.properties
 src/main/resources/application-local.yml
