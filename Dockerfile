@@ -1,12 +1,12 @@
-# Stage 1: сборка
-FROM openjdk:17-jdk-slim AS builder
+# Stage 1
+FROM openjdk:17-slim AS builder
 WORKDIR /app
 COPY . .
-RUN ./mvnw clean package -DskipTests
+RUN chmod +x ./mvnw && ./mvnw clean package -DskipTests
 
-# Stage 2: финальный образ
-FROM openjdk:17-jre-slim
+# Stage 2
+FROM openjdk:17-slim
 WORKDIR /app
 COPY --from=builder /app/target/lab_4-*.jar app.jar
-EXPOSE 5000
+EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
