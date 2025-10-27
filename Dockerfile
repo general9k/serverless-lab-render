@@ -1,5 +1,5 @@
 # Stage 1
-FROM openjdk:17-slim AS builder
+FROM eclipse-temurin:21-jdk AS builder
 WORKDIR /app
 COPY . .
 RUN chmod +x ./mvnw && ./mvnw clean package -DskipTests
@@ -8,5 +8,5 @@ RUN chmod +x ./mvnw && ./mvnw clean package -DskipTests
 FROM openjdk:17-slim
 WORKDIR /app
 COPY --from=builder /app/target/lab_4-*.jar app.jar
-EXPOSE 8080
+EXPOSE 5000
 ENTRYPOINT ["java", "-jar", "app.jar"]
