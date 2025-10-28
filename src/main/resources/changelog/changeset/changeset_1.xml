@@ -4,7 +4,23 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="000000000001_init" author="general9k">
+    <changeSet id="init_000000001" author="general9k">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="messages"/>
+            </not>
+        </preConditions>
 
+        <createTable tableName="messages">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" primaryKeyName="pk_messages"/>
+            </column>
+            <column name="content" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
     </changeSet>
 </databaseChangeLog>

@@ -3,17 +3,11 @@ spring:
     name: lab_4
   liquibase:
     change-log: changelog/master.xml
-    enabled: false
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:
       hibernate:
         format_sql: true
     show-sql: true
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
-      - org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration
 server:
   port: 5000
